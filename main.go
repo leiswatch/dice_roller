@@ -15,38 +15,44 @@ func main() {
 
 	fmt.Print("\nType q to quit \n\n")
 
-	fmt.Print("Roll: ")
-	fmt.Scan(&s)
+	for {
+    fmt.Print("------------------------------------\n")
+		fmt.Print("Roll: ")
+		fmt.Scan(&s)
+    fmt.Print("\n")
 
-	s = strings.TrimSpace(s)
+		s = strings.TrimSpace(s)
 
-	if s == "q" {
-		os.Exit(0)
-	}
-
-	match, _ := regexp.MatchString("^([1-9]*\\d*k[1-9]+\\d*)$", s)
-
-	if match {
-		numbers := strings.Split(s, "k")
-
-		dices_num, _ := strconv.Atoi(numbers[0])
-		dice_sides, _ := strconv.Atoi(numbers[1])
-
-		if dices_num == 0 {
-			dices_num = 1
+		if s == "q" {
+			os.Exit(0)
 		}
 
-		sum := 0
+		match, _ := regexp.MatchString("^([1-9]*\\d*k[1-9]+\\d*)$", s)
 
-		for i := 0; i < dices_num; i++ {
-			rand.Seed(time.Now().UnixNano())
+		if match {
+			numbers := strings.Split(s, "k")
 
-			num := rand.Intn(dice_sides) + 1
-			sum += num
+			dices_num, _ := strconv.Atoi(numbers[0])
+			dice_sides, _ := strconv.Atoi(numbers[1])
 
-			fmt.Printf("Dice(%d): %d\n", i+1, num)
+			if dices_num == 0 {
+				dices_num = 1
+			}
+
+			sum := 0
+
+			for i := 0; i < dices_num; i++ {
+				rand.Seed(time.Now().UnixNano())
+
+				num := rand.Intn(dice_sides) + 1
+				sum += num
+
+				fmt.Printf("Dice(%d): %d\n", i+1, num)
+			}
+
+			fmt.Print("Sum: ", sum, "\n")
+		} else {
+			fmt.Println("Wrong input. Try again.")
 		}
-
-		fmt.Print("\nSum: ", sum, "\n")
 	}
 }
