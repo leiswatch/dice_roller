@@ -16,10 +16,10 @@ func main() {
 	fmt.Print("\nType q to quit \n\n")
 
 	for {
-    fmt.Print("------------------------------------\n")
+		fmt.Print("------------------------------------\n")
 		fmt.Print("Roll: ")
 		fmt.Scan(&s)
-    fmt.Print("\n")
+		fmt.Print("\n")
 
 		s = strings.TrimSpace(s)
 
