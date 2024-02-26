@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math/rand"
+	"math/rand/v2"
 	"os"
 	"regexp"
 	"slices"
@@ -48,7 +48,7 @@ func main() {
 		sum := 0
 
 		for i := range d {
-			roll := rand.Intn(v) + 1
+			roll := rand.N(v) + 1
 
 			if d > 1 {
 				sum += roll
